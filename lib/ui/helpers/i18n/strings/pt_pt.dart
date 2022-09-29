@@ -38,6 +38,6 @@ class PtPt implements Translations {
   String get msgEmailInUse => 'Email ja esta ser utilizado';
   
 
-  String get surveys => 'Enquetes';
+  String get posts => 'Postagens';
   String get reload=>'Recarregar';
 }

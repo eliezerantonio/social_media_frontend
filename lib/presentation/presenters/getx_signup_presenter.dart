@@ -101,7 +101,7 @@ class GetxSignUpPresenter extends GetxController implements SignUpPresenter {
         
     await saveCurrentAccount.save(account);
 
- _navigateTo.value = "/surveys";
+ _navigateTo.value = "/posts";
    }on DomainError catch (error) {
 
     switch(error){
