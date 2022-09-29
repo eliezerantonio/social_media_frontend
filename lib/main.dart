@@ -30,6 +30,7 @@ class App extends StatelessWidget {
         GetPage(name: '/', page: makeSplashPage, transition: Transition.fade),
         GetPage(name: '/login', page: makeLoginPage, transition: Transition.fadeIn),
         GetPage(name: '/signup', page: makeSignUpPage, transition: Transition.fadeIn),
+        GetPage(name: '/posts', page:()=> Scaffold(body: Center(child:Text("Eliezer"))), transition: Transition.fadeIn),
       ],
     );
   }

@@ -1,2 +1,7 @@
-String makeApiUrl(String path) => 'http://localhost:3000/api/$path';
+String makeApiUrl(String path) {
+
+ final url= 'http://172.20.10.4:3000/api/$path';
+ print(url);
+ return url;
+}
  
