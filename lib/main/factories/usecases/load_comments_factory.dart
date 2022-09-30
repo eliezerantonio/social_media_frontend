@@ -7,4 +7,4 @@ import '../../../domain/usecases/usecases.dart';
 import '../factories.dart';
 import '../http/authorize_http_client_decorator_factory.dart';
 
-LoadComments makeRemoteLoadComments() => RemoteLoadComments(httpClient: makeAuthorizeHttpClientDecorator(), url: makeApiUrl('comments'));
+LoadComments makeRemoteLoadComments(String postId) => RemoteLoadComments(httpClient: makeAuthorizeHttpClientDecorator(), url: makeApiUrl('comments/$postId'));

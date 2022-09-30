@@ -16,8 +16,7 @@ class RemoteLoadComments  implements LoadComments{
   Future<List<CommentEntity>> load(String id) async {
     try {
 
-      final httpResponse = await httpClient.request(url: url, method: 'get', body:{'postId':id});
-
+      final httpResponse = await httpClient.request(url: url, method: 'get', body:{'post':'63342f75dec8aabd76b9b15f'});
       return httpResponse['comments'].map<CommentEntity>((json) => RemoteCommentModel.fromJson(json).toEntity()).toList();
       
     } on HttpError catch (error) {

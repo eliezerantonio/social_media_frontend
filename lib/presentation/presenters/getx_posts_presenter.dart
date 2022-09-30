@@ -16,6 +16,7 @@ class GetxPostsPresenter implements PostsPresenter {
  
   @override
   Stream<List<PostViewModel>> get loadPostsStream => _posts.stream;
+    Stream<String>  get navigateToStream => _navigateTo.stream;
   GetxPostsPresenter({@required this.loadPosts});
 
   @override
@@ -39,5 +40,7 @@ class GetxPostsPresenter implements PostsPresenter {
     } 
   }
 
-  
+  void goToComments(String postId){
+     _navigateTo.subject.add('/comments/$postId') ;
+   }
 }

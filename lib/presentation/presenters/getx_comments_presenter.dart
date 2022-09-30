@@ -9,24 +9,25 @@ import '../../ui/pages/comments/comments_presenter.dart';
 
 class GetxCommentsPresenter implements CommentsPresenter {
   final LoadComments loadComments;
- 
+   final String postId;
   final _comments = Rx<List<CommentViewModel>>([]);
 
  
   @override
   Stream<List<CommentViewModel>> get loadCommentsStream => _comments.stream;
 
-  GetxCommentsPresenter({@required this.loadComments});
+  GetxCommentsPresenter({@required this.loadComments, @required this.postId});
 
   @override
-  Future<void> loadData(String id) async {
+  Future<void> loadData() async {
 
     try {
-      final comments = await loadComments.load(id);
+      final comments = await loadComments.load(postId);
 
       _comments.value = comments.map((comment) => CommentViewModel(id:comment.id, description: comment.description, postId: comment.postId, userId: comment.userId, ) ).toList();
     } on DomainError {
       _comments.subject.addError(UIError.unexpected.description);
     } 
   }
+   
 }

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:social_media_front/ui/pages/comments/comment_view_model.dart';
-import 'package:social_media_front/ui/pages/posts/post_view_model.dart';
-import 'package:social_media_front/ui/pages/posts/posts_presenter.dart';
 
 import '../../helpers/i18n/resources.dart';
 import 'comments_presenter.dart';
@@ -13,25 +11,13 @@ class CommentsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final postId = ModalRoute.of(context).settings.arguments as String;
-    presenter.loadData(postId);
+    presenter.loadData();
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        title: const Text('ClassDojo'),
+        title: const Text('Comentarios'),
         centerTitle: true,
-        leading: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Container(
-            width: 0,
-            height: 0,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(30),
-              image: DecorationImage(image: NetworkImage("https://media-exp1.licdn.com/dms/image/C4E03AQGXYanhKHUo-g/profile-displayphoto-shrink_800_800/0/1636053493226?e=1669852800&v=beta&t=iIBSCdbhhLUwifaLR1qnpS84gKIipiyy3ORvKZ5IMKY"))
-            ),
-          ),
-        ),
+       
         actions: const [
           Icon(Icons.notifications),
         ],
@@ -52,8 +38,8 @@ class CommentsPage extends StatelessWidget {
                           textAlign: TextAlign.center),
                       const SizedBox(height: 10),
                       ElevatedButton(
-                          onPressed: ()=>presenter.loadData(""),
-                          child: Text(R.string.reload))
+                          onPressed: presenter.loadData,
+                          child: Text(R.string.reload, style: const TextStyle(color:Colors.white),))
                     ]),
               );
             }
@@ -61,7 +47,7 @@ class CommentsPage extends StatelessWidget {
               return ListView(
                 physics: const BouncingScrollPhysics(),
                 children: snapshot.data
-                    .map((viewModel) =>Container())
+                    .map((viewModel) =>CommentItem(viewModel))
                     .toList(),
               );
             }
