@@ -11,22 +11,36 @@ class SplashPage extends StatelessWidget {
     presenter.checkAccount();
     return Scaffold(
       appBar: AppBar(
-          title: Text("4Dev"),
-          centerTitle: true,
-          backgroundColor: Color.fromRGBO(136, 14, 79, 1)),
-      body: Builder(builder: (context) {
-        presenter.navigateToStream.listen((page) {
-          //caso receba pagina nula
+        title: const Text("Social Media"),
+        centerTitle: true,
+      ),
+      body: Builder(
+        builder: (context) {
+          presenter.navigateToStream.listen((page) {
+            //caso receba pagina nula
 
-          if (page?.isNotEmpty == true) {
-            Get.offAllNamed(page);
-          }
-        });
+            if (page?.isNotEmpty == true) {
+              Get.offAllNamed(page);
+            }
+          });
 
-        return Center(
-            child: CircularProgressIndicator(
-                color: Color.fromRGBO(136, 14, 79, 1)));
-      }),
+          return Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Social Media",
+                    style: TextStyle(
+                        fontSize: 33, color: Theme.of(context).primaryColor)),
+                const SizedBox(
+                  height: 10,
+                ),
+                CircularProgressIndicator(
+                    color: Theme.of(context).primaryColor),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }

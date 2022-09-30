@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
+import 'package:social_media_front/ui/pages/pages.dart';
 
 import '/main/factories/factories.dart';
 import 'main/factories/pages/signup/signup.dart';
@@ -10,8 +11,8 @@ import 'ui/helpers/i18n/resources.dart';
 
 void main() {
   Provider.debugCheckInvalidValueType = null;
-  R.load(Locale('en', 'US'));
-  runApp(App());
+  R.load(const Locale('en', 'US'));
+  runApp(const App());
 }
 
 class App extends StatelessWidget {
@@ -30,7 +31,7 @@ class App extends StatelessWidget {
         GetPage(name: '/', page: makeSplashPage, transition: Transition.fade),
         GetPage(name: '/login', page: makeLoginPage, transition: Transition.fadeIn),
         GetPage(name: '/signup', page: makeSignUpPage, transition: Transition.fadeIn),
-        GetPage(name: '/posts', page:()=> Scaffold(body: Center(child:Text("Eliezer"))), transition: Transition.fadeIn),
+        GetPage(name: '/posts', page:()=> PostsPage(), transition: Transition.fadeIn),
       ],
     );
   }
