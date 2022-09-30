@@ -18,7 +18,7 @@ class RemoteCommentModel {
   factory RemoteCommentModel.fromJson(Map json) {
     if (!json.keys
         .toSet()
-        .containsAll(['_id', 'description', 'postId', 'userId'])) {
+        .containsAll(['id', 'description', 'postId', 'userId'])) {
       throw HttpError.invalidData;
     }
 

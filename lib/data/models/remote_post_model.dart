@@ -15,12 +15,12 @@ class RemotePostModel {
   RemotePostModel({@required this.id, @required this.comments, @required this.likes, @required  this.description, @required this.created,@required this.pics});
 
   factory RemotePostModel.fromJson(Map json) {
-    if (!json.keys.toSet().containsAll(['_id', 'likes', 'comments', 'description', 'created', 'pics'])) {
+    if (!json.keys.toSet().containsAll(['id', 'likes', 'comments', 'description', 'created', 'pics'])) {
       throw HttpError.invalidData;
     }
 
     return RemotePostModel(
-      id: json['_id'],
+      id: json['id'],
       likes: json['likes'],
       comments: json['comments'],
       description: json['description'],

@@ -16,8 +16,8 @@ class RemoteLoadComments  implements LoadComments{
   Future<List<CommentEntity>> load(String id) async {
     try {
 
-      final httpResponse = await httpClient.request(url: url, method: 'get', body:{'post':'63342f75dec8aabd76b9b15f'});
-      return httpResponse['comments'].map<CommentEntity>((json) => RemoteCommentModel.fromJson(json).toEntity()).toList();
+      final httpResponse = await httpClient.request(url: url, method: 'get', );
+      return httpResponse.map<CommentEntity>((json) => RemoteCommentModel.fromJson(json).toEntity()).toList();
       
     } on HttpError catch (error) {
       
@@ -30,14 +30,3 @@ class RemoteLoadComments  implements LoadComments{
   
 }
 
-class RemoteLoadCommentsParams{
-  final String postId;
-
-  RemoteLoadCommentsParams(this.postId);
-
-  factory RemoteLoadCommentsParams.fromDomain(LoadCommentsParams params) =>
-    RemoteLoadCommentsParams(params.postId);
-
-    Map toJson() => {'postId':postId};
-  
-}

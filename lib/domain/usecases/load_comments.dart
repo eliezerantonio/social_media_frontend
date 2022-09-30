@@ -8,12 +8,3 @@ abstract class LoadComments{
 }
 
 
-class  LoadCommentsParams extends Equatable{
-  final String postId;
-
-  const LoadCommentsParams(this.postId);
-  
-  @override
-  List<Object> get props => [postId];
-
-}

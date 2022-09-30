@@ -14,22 +14,19 @@ void main() {
   String url;
   List<Map> list;
   RemoteLoadComments sut;
-  RemoteLoadCommentsParams params;
-
+  String postId;
   HttpClientSpy httpClient;
   List<Map> mockValidData() => [
         {
           'id': faker.guid.guid(),
           'description': faker.randomGenerator.string(50),
           'postId': faker.guid.guid(),
-         
           'userId': faker.guid.guid(),
         },
         {
           'id': faker.guid.guid(),
           'description': faker.randomGenerator.string(50),
           'postId': faker.guid.guid(),
-         
           'userId': faker.guid.guid(),
         },
        
@@ -51,20 +48,20 @@ void main() {
 
   setUp(() {
     url = faker.internet.httpUrl();
+    postId=faker.guid.guid();
     httpClient = HttpClientSpy();
     sut = RemoteLoadComments(url: url, httpClient: httpClient);
-    params=RemoteLoadCommentsParams(faker.guid.guid());
     mockHttpData(mockValidData());
   });
 
   test('Should calll HttpClient with currect values', () async {
-    await sut.load(params.postId);
+    await sut.load(postId);
 
-    verify(httpClient.request(url: url, method: 'get',body:{'postId':params.postId}));
+    verify(httpClient.request(url: url, method: 'get',));
   });
 
     test('Should return posts on 200', () async {
-    final posts = await sut.load(params.postId);
+    final posts = await sut.load(postId);
 
     expect(posts, [
       CommentEntity(
@@ -87,14 +84,14 @@ void main() {
 
   test('Should throw UnexpectedError if HttpClient returns 404', () {
     mockHttpError(HttpError.notFound);
-    final future = sut.load(params.postId);
+    final future = sut.load(postId);
 
     expect(future, throwsA(DomainError.unexpected));
   });
 
   test('Should throw AccessDeniedError if HttpClient returns 403', () {
     mockHttpError(HttpError.forbidden);
-    final future = sut.load(params.postId);
+    final future = sut.load(postId);
 
     expect(future, throwsA(DomainError.accessDenied));
   });
@@ -102,7 +99,7 @@ void main() {
 
   test('Should throw UnexpectedError if HttpClient returns 500', () {
     mockHttpError(HttpError.serverError);
-    final future = sut.load(params.postId);
+    final future = sut.load(postId);
 
     expect(future, throwsA(DomainError.unexpected));
   });
