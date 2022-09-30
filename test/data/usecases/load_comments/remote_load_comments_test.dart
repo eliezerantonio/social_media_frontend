@@ -1,7 +1,7 @@
 import 'package:faker/faker.dart';
 import 'package:mockito/mockito.dart';
 import 'package:social_media_front/data/http/http.dart';
-import 'package:social_media_front/data/usecases/load_comments/load_comments.dart';
+import 'package:social_media_front/data/usecases/load_comments/remote_load_comments.dart';
 import 'package:social_media_front/domain/entities/entities.dart';
 import 'package:social_media_front/domain/helpers/helpers.dart';
 

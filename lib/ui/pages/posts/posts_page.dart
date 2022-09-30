@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:social_media_front/ui/pages/posts/post_view_model.dart';
 import 'package:social_media_front/ui/pages/posts/posts_presenter.dart';
 
@@ -23,57 +24,64 @@ class PostsPage extends StatelessWidget {
             width: 0,
             height: 0,
             decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(30),
-              image: DecorationImage(image: NetworkImage("https://media-exp1.licdn.com/dms/image/C4E03AQGXYanhKHUo-g/profile-displayphoto-shrink_800_800/0/1636053493226?e=1669852800&v=beta&t=iIBSCdbhhLUwifaLR1qnpS84gKIipiyy3ORvKZ5IMKY"))
-            ),
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(30),
+                image: DecorationImage(
+                    image: NetworkImage(
+                        "https://media-exp1.licdn.com/dms/image/C4E03AQGXYanhKHUo-g/profile-displayphoto-shrink_800_800/0/1636053493226?e=1669852800&v=beta&t=iIBSCdbhhLUwifaLR1qnpS84gKIipiyy3ORvKZ5IMKY"))),
           ),
         ),
         actions: const [
           Icon(Icons.notifications),
         ],
       ),
-      body: StreamBuilder<List<PostViewModel>>(
-          stream: presenter.loadPostsStream,
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return Padding(
-                padding: const EdgeInsets.all(40),
+      body: Provider(
+        create: (_) => presenter,
+        child: StreamBuilder<List<PostViewModel>>(
+            stream: presenter.loadPostsStream,
+            builder: (context, snapshot) {
+              if (snapshot.hasError) {
+                return Padding(
+                  padding: const EdgeInsets.all(40),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(snapshot.error,
+                            style: const TextStyle(
+                              fontSize: 16,
+                            ),
+                            textAlign: TextAlign.center),
+                        const SizedBox(height: 10),
+                        ElevatedButton(
+                            onPressed: presenter.loadData,
+                            child: Text(R.string.reload))
+                      ]),
+                );
+              }
+              if (snapshot.hasData) {
+                return ListView(
+                  physics: const BouncingScrollPhysics(),
+                  children: snapshot.data
+                      .map((viewModel) => PostItem(viewModel))
+                      .toList(),
+                );
+              }
+              return Center(
                 child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(snapshot.error,
-                          style: const TextStyle(
-                            fontSize: 16,
-                          ),
-                          textAlign: TextAlign.center),
-                      const SizedBox(height: 10),
-                      ElevatedButton(
-                          onPressed: presenter.loadData,
-                          child: Text(R.string.reload))
-                    ]),
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: const [
+                    CircularProgressIndicator(color: Colors.white),
+                    SizedBox(height: 10),
+                    Text(
+                      "Aguarde ...",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.white),
+                    )
+                  ],
+                ),
               );
-            }
-            if (snapshot.hasData) {
-              return ListView(
-                physics: const BouncingScrollPhysics(),
-                children: snapshot.data
-                    .map((viewModel) => PostItem(viewModel))
-                    .toList(),
-              );
-            }
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  CircularProgressIndicator(
-                      color: Colors.white),
-                  SizedBox(height: 10),
-                  Text("Aguarde ...", textAlign: TextAlign.center, style: TextStyle(color:Colors.white),)
-                ],
-              ),
-            );
-          }),
+            }),
+      ),
       bottomNavigationBar: BottomNavigationBar(
           unselectedItemColor: Colors.grey,
           backgroundColor: Theme.of(context).primaryColorLight,

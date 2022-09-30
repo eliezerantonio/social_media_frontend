@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/route_manager.dart';
 import 'package:provider/provider.dart';
-import 'package:social_media_front/ui/pages/pages.dart';
 
 import '/main/factories/factories.dart';
+import 'main/factories/pages/comments/comments.dart';
 import 'main/factories/pages/posts/posts_page_factory.dart';
 import 'main/factories/pages/signup/signup.dart';
 import 'ui/components/componets.dart';
@@ -33,6 +33,7 @@ class App extends StatelessWidget {
         GetPage(name: '/login', page: makeLoginPage, transition: Transition.fadeIn),
         GetPage(name: '/signup', page: makeSignUpPage, transition: Transition.fadeIn),
         GetPage(name: '/posts', page: makePostsPage, transition: Transition.fadeIn),
+        GetPage(name: '/comments', page: makeCommentsPage, transition: Transition.fadeIn),
       ],
     );
   }

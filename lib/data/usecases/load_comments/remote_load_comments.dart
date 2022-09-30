@@ -18,7 +18,7 @@ class RemoteLoadComments  implements LoadComments{
 
       final httpResponse = await httpClient.request(url: url, method: 'get', body:{'postId':id});
 
-      return httpResponse.map<CommentEntity>((json) => RemoteCommentModel.fromJson(json).toEntity()).toList();
+      return httpResponse['comments'].map<CommentEntity>((json) => RemoteCommentModel.fromJson(json).toEntity()).toList();
       
     } on HttpError catch (error) {
       

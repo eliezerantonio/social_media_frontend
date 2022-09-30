@@ -12,11 +12,10 @@ class GetxPostsPresenter implements PostsPresenter {
   final LoadPosts loadPosts;
  
   final _posts = Rx<List<PostViewModel>>([]);
-
+ final _navigateTo = RxString('');
  
   @override
   Stream<List<PostViewModel>> get loadPostsStream => _posts.stream;
-
   GetxPostsPresenter({@required this.loadPosts});
 
   @override
@@ -39,4 +38,6 @@ class GetxPostsPresenter implements PostsPresenter {
       _posts.subject.addError(UIError.unexpected.description);
     } 
   }
+
+  
 }
