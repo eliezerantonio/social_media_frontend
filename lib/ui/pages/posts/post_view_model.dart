@@ -5,7 +5,7 @@ class PostViewModel extends Equatable{
   final String description;
   final int likes;
   final String created;
-  final List<String> pics;
+  final List<dynamic> pics;
 
   const PostViewModel({
     @required this.id,

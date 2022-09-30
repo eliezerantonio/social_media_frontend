@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:social_media_front/ui/pages/pages.dart';
 
 import '/main/factories/factories.dart';
+import 'main/factories/pages/posts/posts_page_factory.dart';
 import 'main/factories/pages/signup/signup.dart';
 import 'ui/components/componets.dart';
 import 'ui/helpers/i18n/resources.dart';
@@ -31,7 +32,7 @@ class App extends StatelessWidget {
         GetPage(name: '/', page: makeSplashPage, transition: Transition.fade),
         GetPage(name: '/login', page: makeLoginPage, transition: Transition.fadeIn),
         GetPage(name: '/signup', page: makeSignUpPage, transition: Transition.fadeIn),
-        GetPage(name: '/posts', page:()=> PostsPage(), transition: Transition.fadeIn),
+        GetPage(name: '/posts', page: makePostsPage, transition: Transition.fadeIn),
       ],
     );
   }

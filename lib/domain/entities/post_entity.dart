@@ -6,7 +6,7 @@ class PostEntity extends Equatable {
   final String description;
   final int likes;
   final DateTime created;
-  final List<String> pics;
+  final List<dynamic> pics;
 
   const PostEntity({
     @required this.id,

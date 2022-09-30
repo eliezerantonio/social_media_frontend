@@ -9,12 +9,12 @@ class RemotePostModel {
    final String description;
    final int likes;
   final  String created;
-  final List<String> pics;
+  final List<dynamic> pics;
 
   RemotePostModel({@required this.id, @required this.likes, @required  this.description, @required this.created,@required this.pics});
 
   factory RemotePostModel.fromJson(Map json) {
-    if (!json.keys.toSet().containsAll(['id', 'likes', 'description', 'created', 'pics'])) {
+    if (!json.keys.toSet().containsAll(['_id', 'likes', 'description', 'created', 'pics'])) {
       throw HttpError.invalidData;
     }
 
