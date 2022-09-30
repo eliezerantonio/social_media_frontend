@@ -22,6 +22,7 @@ void main() {
           description: faker.randomGenerator.string(8),
           created: DateTime(2022, 08, 23),
           likes: faker.randomGenerator.integer(8),
+          comments: faker.randomGenerator.integer(8),
           pics: [
             faker.randomGenerator.string(5),
             faker.randomGenerator.string(5),
@@ -32,6 +33,7 @@ void main() {
           description: faker.randomGenerator.string(8),
           created: DateTime(2022, 10, 13),
           likes: faker.randomGenerator.integer(8),
+          comments: faker.randomGenerator.integer(8),
           pics: [
             faker.randomGenerator.string(5),
             faker.randomGenerator.string(5),
@@ -68,12 +70,14 @@ void main() {
             description: posts[0].description,
             id: posts[0].id,
             likes: posts[0].likes,
+            comments: posts[0].comments,
             pics: posts[0].pics,
           ), PostViewModel(
             created: '13 Out 2021',
             description: posts[1].description,
             id: posts[1].id,
             likes: posts[1].likes,
+            comments: posts[1].comments,
             pics: posts[1].pics,
           ),
         ]),

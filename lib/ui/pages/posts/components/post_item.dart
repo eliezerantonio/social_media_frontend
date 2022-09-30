@@ -18,19 +18,15 @@ class PostItem extends StatelessWidget {
                     color: Colors.white,
                     fontWeight: FontWeight.bold)),
             const Text("3.* ano B * 2 meses",
-                style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.grey)),
+                style: TextStyle(fontSize: 13, color: Colors.grey)),
             const SizedBox(height: 6),
             ClipRRect(
               borderRadius: BorderRadius.circular(40),
-              child: Image.network(
-                  viewModel.pics[0],
-                  fit: BoxFit.cover,
-                  height: 330),
+              child: Image.network(viewModel.pics[0],
+                  fit: BoxFit.cover, height: 330),
             ),
             const SizedBox(height: 6),
-             Text(
+            Text(
               viewModel.description,
               style: const TextStyle(color: Colors.white, fontSize: 16),
             ),
@@ -42,15 +38,19 @@ class PostItem extends StatelessWidget {
                     fontWeight: FontWeight.bold)),
             const SizedBox(height: 6),
             Row(
-              children:  [
+              children: [
                 const Icon(Icons.favorite, color: Colors.red, size: 18),
                 const SizedBox(width: 6),
-                Text(viewModel.likes.toString(), style: const TextStyle(color: Colors.grey, fontSize: 16)),
+                Text(viewModel.likes.toString(),
+                    style: const TextStyle(color: Colors.grey, fontSize: 16)),
                 const SizedBox(width: 6),
                 const Text("Gostos",
                     style: TextStyle(color: Colors.grey, fontSize: 16)),
                 const SizedBox(width: 12),
                 const Icon(Icons.sms, color: Colors.grey, size: 18),
+                const SizedBox(width: 6),
+                Text(viewModel.comments.toString(),
+                    style: const TextStyle(color: Colors.grey, fontSize: 16)),
                 const SizedBox(width: 6),
                 const Text("Comentarios",
                     style: TextStyle(color: Colors.grey, fontSize: 16)),

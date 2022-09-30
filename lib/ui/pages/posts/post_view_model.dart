@@ -4,6 +4,7 @@ class PostViewModel extends Equatable{
  final String id;
   final String description;
   final int likes;
+  final int comments;
   final String created;
   final List<dynamic> pics;
 
@@ -11,11 +12,12 @@ class PostViewModel extends Equatable{
     @required this.id,
     @required this.description,
     @required this.likes,
+    @required this.comments,
     @required this.created,
     @required this.pics,
   });
 
   @override
-  List<Object> get props => ['id', 'likes', 'description', 'created', 'pics'];
+  List<Object> get props => ['id', 'likes', 'comments', 'description', 'created', 'pics'];
 
 }
