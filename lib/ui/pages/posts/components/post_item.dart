@@ -12,13 +12,31 @@ class PostItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text("Prof. Mesquita",
+            ListTile(
+              leading: Container(
+                width: 60,
+                height: 60,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(30),
+                  image: const DecorationImage(
+                    image: NetworkImage(
+                        "https://mundonegro.inf.br/wp-content/uploads/2020/12/curso-online.jpg"),
+                        fit: BoxFit.cover
+                  ),
+                ),
+              ),
+              title: const Text(
+                "Prof. Mesquita",
                 style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold)),
-            const Text("3.* ano B * 2 meses",
-                style: TextStyle(fontSize: 13, color: Colors.grey)),
+                  fontSize: 15,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              subtitle: const Text("3.* ano B * 2 meses",
+                  style: TextStyle(fontSize: 13, color: Colors.grey)),
+            ),
             const SizedBox(height: 6),
             ClipRRect(
               borderRadius: BorderRadius.circular(40),

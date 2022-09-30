@@ -29,6 +29,7 @@ class GetxPostsPresenter implements PostsPresenter {
               id: post.id,
               description: post.description,
               likes: post.likes,
+              comments: post.comments,
               created: DateFormat('dd MMM yyy').format(post.created),
               pics: post.pics,
             ),

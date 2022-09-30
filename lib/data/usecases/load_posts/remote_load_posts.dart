@@ -20,8 +20,7 @@ class RemoteLoadPosts implements LoadPosts {
 Future<List<PostEntity>> load() async {
     try {
       final httpResponse = await httpClient.request(url: url, method: 'get');
-    
-            return httpResponse.map<PostEntity>((json) => RemotePostModel.fromJson(json).toEntity()).toList();
+            return httpResponse['posts'].map<PostEntity>((json) => RemotePostModel.fromJson(json).toEntity()).toList();
     } on HttpError catch (error) {
       throw error == HttpError.forbidden
           ? DomainError.accessDenied
