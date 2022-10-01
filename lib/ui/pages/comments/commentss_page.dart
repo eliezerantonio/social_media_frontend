@@ -17,7 +17,6 @@ class CommentsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Comentarios'),
         centerTitle: true,
-      
       ),
       body: StreamBuilder<List<CommentViewModel>>(
           stream: presenter.loadCommentsStream,
@@ -74,22 +73,24 @@ class CommentsPage extends StatelessWidget {
             child: Container(
                 height: 50,
                 alignment: Alignment.center,
-                margin: const EdgeInsets.symmetric(horizontal: 10,vertical:15 ),
+                margin:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
                 decoration: BoxDecoration(
-                    color: Colors.white, borderRadius: BorderRadius.circular(30)),
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(30)),
                 child: TextFormField(
                   maxLines: 40,
                   decoration: const InputDecoration(
                       hintText: "Escreva um comentario",
                       border: InputBorder.none,
-                      contentPadding: EdgeInsets.symmetric(horizontal: 10,vertical:7 )),
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 7)),
                 )),
           ),
-               IconButton(onPressed: (){
-
-              },
-              
-              icon:const Icon(Icons.send, color: Colors.white, size:30))
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.send, color: Colors.white, size: 30),
+          )
         ],
       ),
     );
