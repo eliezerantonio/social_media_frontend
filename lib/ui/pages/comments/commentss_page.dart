@@ -17,10 +17,7 @@ class CommentsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Comentarios'),
         centerTitle: true,
-       
-        actions: const [
-          Icon(Icons.notifications),
-        ],
+      
       ),
       body: StreamBuilder<List<CommentViewModel>>(
           stream: presenter.loadCommentsStream,
@@ -39,7 +36,10 @@ class CommentsPage extends StatelessWidget {
                       const SizedBox(height: 10),
                       ElevatedButton(
                           onPressed: presenter.loadData,
-                          child: Text(R.string.reload, style: const TextStyle(color:Colors.white),))
+                          child: Text(
+                            R.string.reload,
+                            style: const TextStyle(color: Colors.white),
+                          ))
                     ]),
               );
             }
@@ -47,7 +47,7 @@ class CommentsPage extends StatelessWidget {
               return ListView(
                 physics: const BouncingScrollPhysics(),
                 children: snapshot.data
-                    .map((viewModel) =>CommentItem(viewModel))
+                    .map((viewModel) => CommentItem(viewModel))
                     .toList(),
               );
             }
@@ -55,36 +55,43 @@ class CommentsPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
-                  CircularProgressIndicator(
-                      color: Colors.white),
+                  CircularProgressIndicator(color: Colors.white),
                   SizedBox(height: 10),
-                  Text("Aguarde ...", textAlign: TextAlign.center, style: TextStyle(color:Colors.white),)
+                  Text(
+                    "Aguarde ...",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.white),
+                  )
                 ],
               ),
             );
           }),
-      bottomNavigationBar: BottomNavigationBar(
-          unselectedItemColor: Colors.grey,
-          backgroundColor: Theme.of(context).primaryColorLight,
-          type: BottomNavigationBarType.fixed,
-          items: const [
-            BottomNavigationBarItem(
-                icon: Icon(
-                  Icons.picture_in_picture,
-                ),
-                label: 'Diario'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.people, color: Colors.grey),
-                label: 'Criancas'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.add_circle, color: Colors.grey),
-                label: 'Pontos'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.sms, color: Colors.grey), label: 'Mensagem'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.tips_and_updates, color: Colors.grey),
-                label: 'Descobrir'),
-          ]),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: Row(
+        children: [
+          Expanded(
+            flex: 2,
+            child: Container(
+                height: 50,
+                alignment: Alignment.center,
+                margin: const EdgeInsets.symmetric(horizontal: 10,vertical:15 ),
+                decoration: BoxDecoration(
+                    color: Colors.white, borderRadius: BorderRadius.circular(30)),
+                child: TextFormField(
+                  maxLines: 40,
+                  decoration: const InputDecoration(
+                      hintText: "Escreva um comentario",
+                      border: InputBorder.none,
+                      contentPadding: EdgeInsets.symmetric(horizontal: 10,vertical:7 )),
+                )),
+          ),
+               IconButton(onPressed: (){
+
+              },
+              
+              icon:const Icon(Icons.send, color: Colors.white, size:30))
+        ],
+      ),
     );
   }
 }
