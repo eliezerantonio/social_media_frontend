@@ -51,6 +51,7 @@ class GetxCommentsPresenter implements CommentsPresenter {
 
 
       await saveComment.save(_description);
+      loadData();
     } on DomainError {
     
     }
