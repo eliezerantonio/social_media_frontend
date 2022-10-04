@@ -7,7 +7,9 @@ class CommentItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children:[
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children:[
 
       Text(viewModel.description, style:const TextStyle(color: Colors.white, fontSize: 16)),
       const Divider(color: Colors.white,)

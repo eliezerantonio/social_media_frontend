@@ -1,16 +1,80 @@
 # social_media_front
 
-A new Flutter project.
+> ## Princípios
 
-## Getting Started
+* Single Responsibility Principle (SRP)
+* Open Closed Principle (OCP)
+* Liskov Substitution Principle (LSP)
+* Interface Segregation Principle (ISP)
+* Dependency Inversion Principle (DIP)
+* Separation of Concerns (SOC)
+* Don't Repeat Yourself (DRY)
+* You Aren't Gonna Need It (YAGNI)
+* Keep It Simple, Silly (KISS)
+* Command Query Responsibility Segregation (CQRS)
+* Composition Over Inheritance
+* Small Commits
 
-This project is a starting point for a Flutter application.
+> ## Design Patterns 
 
-A few resources to get you started if this is your first Flutter project:
+* Factory
+* Adapter
+* Composite
+* Decorator
+* Dependency Injection
+* Abstract Server
+* Composition Root
+* Builder
+* Observer
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+> ## Metodologias e Designs
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+* TDD
+* BDD
+* Clean Architecture
+* Reactive Programming
+* GitFlow
+* Modular Design
+* Use Cases
+
+> ## Bibliotecas e Ferramentas
+
+* Flutter
+* Http
+* Provider
+* GetX
+* Equatable
+* Mockito
+* Faker
+* Meta
+* Git
+* Flutter Secure Storage
+* LocalStorage
+* i18n
+
+> ## Features do Dart/Flutter
+* Classes
+* Abstract Classes
+* Functions
+* Constants
+* Mixins
+* Enums
+* Exceptions
+* Futures
+* Streams
+* Constructors
+* Async/Await
+* Stateless Widgets
+* Stateful Widgets
+* Material Theme
+* Assets
+
+> ## Features de Testes
+
+* Testes Unitários
+* Testes de Streams
+* Cobertura de Testes
+* Test Doubles
+* Mocks
+* Stubs
+* Spies

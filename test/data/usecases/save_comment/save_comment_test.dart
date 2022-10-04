@@ -2,6 +2,7 @@ import 'package:faker/faker.dart';
 import 'package:mockito/mockito.dart';
 import 'package:social_media_front/data/http/http.dart';
 import 'package:social_media_front/data/models/remote_comment_model.dart';
+import 'package:social_media_front/data/usecases/remote_save_comment/remote_save.comment.dart';
 import 'package:social_media_front/domain/entities/entities.dart';
 import 'package:social_media_front/domain/helpers/helpers.dart';
 import 'package:social_media_front/domain/usecases/save_comment.dart';
@@ -9,29 +10,6 @@ import 'package:test/test.dart';
 import 'package:meta/meta.dart';
 
 class HttpClientSpy extends Mock implements HttpClient {}
-
-class RemoteSaveComment implements SaveComment {
-  RemoteSaveComment({@required this.httpClient, @required this.url});
-
-  HttpClient httpClient;
-  String url;
-
-  @override
-  Future<CommentEntity> save(String postId) async {
-   try{
-
-  final httpResponse=   await httpClient.request(url: url, method: 'post', body: {'postId': postId});
-
-   return RemoteCommentModel.fromJson(httpResponse).toEntity();
-      
-   }on HttpError catch (error) {
-
-      throw error == HttpError.forbidden
-          ? DomainError.accessDenied
-          : DomainError.unexpected;
-    }
-  }
-}
 
 void main() {
   RemoteSaveComment sut;

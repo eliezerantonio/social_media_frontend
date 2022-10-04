@@ -42,23 +42,31 @@ class GetxLoginPresenter extends GetxController implements LoginPresenter {
   @override
   Stream<bool> get isFormValidStream => _isFormValid.stream;
 
-
   @override
   void validateEmail(String email) {
     _email = email;
-    _emailError.value = _validateField('email',);
+    _emailError.value = _validateField(
+      'email',
+    );
     _validadeForm();
   }
 
   @override
   void validatePassword(String password) {
     _password = password;
-    _passwordError.value = _validateField('password', );
+    _passwordError.value = _validateField(
+      'password',
+    );
     _validadeForm();
   }
 
-  UIError _validateField(String field, ) {
-    final formData={'email': _email, 'password': _password,};
+  UIError _validateField(
+    String field,
+  ) {
+    final formData = {
+      'email': _email,
+      'password': _password,
+    };
 
     final error = validation.validate(field: field, input: formData);
 
@@ -84,9 +92,10 @@ class GetxLoginPresenter extends GetxController implements LoginPresenter {
   @override
   Future<void> auth() async {
     try {
-      _mainError.value=null;
+      _mainError.value = null;
       _isLoading.value = true;
-      final account = await authentication.auth(AuthenticationParams(email: _email, secret: _password));
+      final account = await authentication
+          .auth(AuthenticationParams(email: _email, secret: _password));
       await saveCurrentAccount.save(account);
       _navigateTo.value = "/posts";
     } on DomainError catch (error) {
@@ -104,9 +113,9 @@ class GetxLoginPresenter extends GetxController implements LoginPresenter {
 
   @override
   void dispose() {}
-  
+
   @override
   void goToSignUp() {
-      _navigateTo.value = "/signup";
+    _navigateTo.value = "/signup";
   }
 }
